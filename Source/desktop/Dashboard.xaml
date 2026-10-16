@@ -1,0 +1,29 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="GPT Switcher" Width="350" SizeToContent="Height" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="Transparent" ShowInTaskbar="False" WindowStartupLocation="Manual" FontFamily="Segoe UI" FontSize="12" UseLayoutRounding="True">
+  <Window.Resources>
+    <Style TargetType="Button"><Setter Property="Background" Value="Transparent"/><Setter Property="Foreground" Value="#343B48"/><Setter Property="BorderThickness" Value="0"/><Setter Property="Padding" Value="10,6"/><Setter Property="Cursor" Value="Hand"/><Setter Property="HorizontalContentAlignment" Value="Left"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button"><Border x:Name="Surface" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" CornerRadius="6"><ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center"/></Border><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Surface" Property="Background" Value="#F0F4FA"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value="0.5"/></Trigger><Trigger Property="IsKeyboardFocused" Value="True"><Setter TargetName="Surface" Property="Background" Value="#EAF1FF"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter></Style>
+  </Window.Resources>
+  <Border Margin="7" Background="White" CornerRadius="11" BorderBrush="#DFE3EA" BorderThickness="1" Padding="10,10,10,8"><Border.Effect><DropShadowEffect BlurRadius="12" ShadowDepth="2" Opacity="0.15" Color="#24324B"/></Border.Effect>
+    <ContentControl x:Name="PageHost" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top"><Grid x:Name="HomeView">
+      <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+      <StackPanel>
+      <Grid Margin="7,1,1,8"><Grid.ColumnDefinitions><ColumnDefinition Width="32"/><ColumnDefinition Width="*"/><ColumnDefinition Width="28"/></Grid.ColumnDefinitions><Border Background="#E8F0FF" Width="25" Height="25" CornerRadius="8" VerticalAlignment="Top"><TextBlock Text="⇄" Foreground="#3977EF" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border><StackPanel Grid.Column="1"><TextBlock Text="GPT Switcher" FontSize="14" FontWeight="SemiBold" Foreground="#252A34"/><TextBlock x:Name="Recent" FontSize="9" Foreground="#8D94A2" Margin="0,2,0,0" TextTrimming="CharacterEllipsis"/></StackPanel><Button x:Name="Hide" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="Hide to tray"/></Grid>
+      <DockPanel Margin="8,0,8,3"><TextBlock x:Name="Count" FontSize="9" Foreground="#9CA2AE"/><TextBlock x:Name="LocalHint" Text="Local · separate sign-ins" FontSize="9" Foreground="#A4AAB5" HorizontalAlignment="Right"/></DockPanel>
+      <Button x:Name="StorageNotice" Visibility="Collapsed" Margin="6,3,6,5" Background="#FFF5E8" ToolTip="Local data access details"/>
+      </StackPanel>
+      <ScrollViewer x:Name="AccountList" Grid.Row="1" MaxHeight="220" VerticalAlignment="Top" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"><StackPanel x:Name="Cards"/></ScrollViewer>
+      <StackPanel Grid.Row="2">
+      <Border Height="1" Background="#EDF0F4" Margin="8,6,8,5"/>
+      <StackPanel x:Name="Actions" TextElement.FontSize="13.5"><Button x:Name="Add" Content="＋  Add account"/><Button x:Name="RefreshAll" Content="↻  Refresh all usage"/><Button x:Name="OpenCurrent" Content="↗  Open ChatGPT"/><Button x:Name="OrganizeHistory" Content="⇄  Organize local history"/><Button x:Name="Settings" Content="⚙  Accounts &amp; settings"/><Button x:Name="Exit" Content="⏻  Quit GPT Switcher"/></StackPanel>
+      <TextBlock x:Name="Status" Visibility="Collapsed" FontSize="10" Foreground="#5E7EAD" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" MaxHeight="32" ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}" Margin="8,4,8,0"/>
+      <Grid Margin="8,6,8,0"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+        <TextBlock x:Name="AuthorCredit" FontSize="10.5" Foreground="#8496AF" TextWrapping="NoWrap" Padding="0,1,8,2"/>
+        <TextBlock x:Name="Footer" Grid.Column="1" FontSize="9" Foreground="#A5ADB9" VerticalAlignment="Center" Padding="0,1,0,2"/>
+      </Grid>
+      <Grid Margin="8,3,8,2"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+        <TextBlock x:Name="ProjectLinks" FontSize="10" Foreground="#91A2BA" TextWrapping="Wrap" Padding="0,1,8,3"/>
+        <TextBlock x:Name="LastRefresh" Grid.Column="1" FontSize="10" Foreground="#91A2BA" VerticalAlignment="Bottom" Padding="0,1,0,3"/>
+      </Grid>
+      </StackPanel>
+    </Grid></ContentControl>
+  </Border>
+</Window>

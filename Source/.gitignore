@@ -1,0 +1,26 @@
+/dist/
+/artifacts/
+/test-output/
+/publish/
+/release/
+/GitHub/
+/BUILD-STATUS.md
+/.local-tools/
+/Local/
+*.dat
+*.tmp
+*.dmp
+*.pdb
+*.log
+*.lnk
+*.json
+*.jsonl
+*.sqlite*
+*.db
+**/Profiles/
+**/Cookies*
+**/Login Data*
+**/Local State
+**/.codex/
+**/.chatgpt-work-switcher/
+**/.native-work-pilot/
